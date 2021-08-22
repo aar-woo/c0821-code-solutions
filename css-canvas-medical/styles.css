@@ -3,6 +3,10 @@
   display: flex;
 }
 
+.flex {
+  display: flex;
+}
+
 .col-full {
   flex-basis: 100%;
 }
@@ -28,8 +32,12 @@
   flex-wrap: wrap;
 }
 
-.margin-bottom-20 {
-  margin-bottom: 20px;
+.inline-block {
+  display: inline-block;
+}
+
+.margin-bottom-30 {
+  margin-bottom: 30px;
 }
 
 .margin-lr-15 {
@@ -42,19 +50,54 @@
   margin-right: 30px;
 }
 
+.margin-r-30 {
+  margin-right: 75px;
+}
+
 .clinicians-prefer-section {
   padding-top: 25px;
   padding-bottom: 40px;
   border-bottom: 1px solid #f2f3f4;
+  color: #6e6e6e;
 }
 
-.padding-lr-15 {
-  padding-left: 15px;
-  padding-right: 15px;
+.learn-more-section {
+  color: #6e6e6e;
+}
+
+.links-section {
+  color: #d9dad9;
+  padding: 80px 70px;
+}
+
+.footer {
+  color: #6e6e6e;
+  padding: 20px 70px;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.padding-lr-70 {
+  padding-left: 70px;
+  padding-right: 70px;
 }
 
 .background-light-grey {
   background-color: #fafafa;
+}
+
+.background-dark-grey {
+  background-color: #525350;
 }
 
 .font-avenir {
@@ -63,4 +106,48 @@
 
 .font-tiempos {
   font-family: "Tiempos Headline", sans-serif;
+}
+
+.font-size-13 {
+  font-size: 13px;
+}
+
+.line-height {
+  line-height: 1.5rem;
+}
+
+.button {
+  background-color: #294464;
+  color: #bbc4ce;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 35px;
+}
+
+.contact-us-button {
+  background-color: #294464;
+  color: #bbc4ce;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+}
+
+.logo {
+  width: 120px;
+}
+
+.hero-image {
+  background-image: url(images/hero.jpg);
+
+  /* width: 90%; */
+}
+
+.nav {
+  border-bottom: 1px solid #f2f3f4;
+  color: #c6c6c6;
+}
+
+.nav li {
+  list-style-type: none;
+}
 }
