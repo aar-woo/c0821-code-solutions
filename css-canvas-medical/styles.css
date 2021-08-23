@@ -137,9 +137,14 @@
 }
 
 .hero-image {
-  background-image: url(images/hero.jpg);
+  width: 90%;
+  position: relative;
+}
 
-  /* width: 90%; */
+.hero-text {
+  position: absolute;
+  left: 20px;
+  top: 50px;
 }
 
 .nav {
