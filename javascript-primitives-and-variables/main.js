@@ -2,7 +2,7 @@ var fullName = 'Aaron Woo';
 var isCool = true;
 var totalPets = 0;
 
-console.log('value of fullName:', fullName);
+console.log('value of fullName: ', fullName);
 console.log('value of isCool:', isCool);
 console.log('value of totalPets:', totalPets);
 
