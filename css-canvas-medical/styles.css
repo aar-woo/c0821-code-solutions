@@ -122,7 +122,7 @@
 
 .button {
   background-color: #294464;
-  color: #bbc4ce;
+  color: white;
   border: none;
   border-radius: 4px;
   padding: 10px 35px;
@@ -130,14 +130,13 @@
 
 .contact-us-button {
   background-color: #294464;
-  color: #bbc4ce;
   border: none;
   border-radius: 4px;
   padding: 10px 15px;
 }
 
 .logo {
-  width: 120px;
+  width: 100px;
 }
 
 .hero-section {
@@ -182,7 +181,7 @@
 
 .nav {
   border-bottom: 1px solid #f2f3f4;
-  color: #c6c6c6;
+  color: #b7b7b7;
 }
 
 .nav li {
