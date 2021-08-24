@@ -7,6 +7,10 @@
   display: flex;
 }
 
+.flex {
+  display: flex;
+}
+
 .col-full {
   flex-basis: 100%;
 }
@@ -17,4 +21,8 @@
 
 .img {
   width: 200px;
+}
+
+.icon {
+  width: 50px;
 }
