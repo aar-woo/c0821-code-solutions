@@ -1,0 +1,20 @@
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+.col-full {
+  flex-basis: 100%;
+}
+
+.col-fourth {
+  flex-basis: 25%;
+}
+
+.img {
+  width: 200px;
+}
