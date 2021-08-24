@@ -1,0 +1,6 @@
+.product-hero-image {
+  width: 700px;
+  height: 350px;
+  background-image: url(images/product/product-header.jpg);
+  background-size: cover;
+}
