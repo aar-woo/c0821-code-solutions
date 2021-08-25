@@ -1,8 +1,5 @@
 
-.row {
-  display: flex;
-}
-
+.row,
 .flex {
   display: flex;
 }
