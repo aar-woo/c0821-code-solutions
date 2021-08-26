@@ -1,0 +1,191 @@
+
+.row,
+.flex {
+  display: flex;
+}
+
+.col-full {
+  flex-basis: 100%;
+}
+
+.col-half {
+  flex-basis: 50%;
+}
+
+.col-fourth {
+  flex-basis: 25%;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-text-center {
+  text-align: center;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+
+.margin-lr-15 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.margin-lr-30 {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.margin-r-30 {
+  margin-right: 75px;
+}
+
+.clinicians-prefer-section {
+  padding-top: 25px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #f2f3f4;
+  color: #6e6e6e;
+}
+
+.learn-more-section {
+  color: #6e6e6e;
+}
+
+.links-section {
+  color: #d9dad9;
+  padding: 80px 70px;
+}
+
+.footer {
+  color: #6e6e6e;
+  padding: 20px 60px;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.padding-lr-70 {
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.background-light-grey {
+  background-color: #fafafa;
+}
+
+.background-dark-grey {
+  background-color: #525350;
+}
+
+.font-avenir {
+  font-family: "Avenir", sans-serif;
+}
+
+.font-tiempos {
+  font-family: "Tiempos Headline", sans-serif;
+}
+
+.font-size-13 {
+  font-size: 13px;
+}
+
+.font-size-11 {
+  font-size: 11px;
+}
+
+.line-height {
+  line-height: 1.2rem;
+}
+
+.button {
+  background-color: #294464;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 35px;
+}
+
+.contact-us-button {
+  background-color: #294464;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.hero-section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.hero-image {
+  width: 740px;
+  height: 370px;
+  background-image: url('images/hero.jpg');
+  background-size: cover;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.hero-text {
+  position: absolute;
+  left: 50px;
+  top: 40px;
+  margin-right: 320px;
+  color: white;
+}
+
+.get-started-btn {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+}
+
+.hero-grey-text {
+  color: #e8e8e8;
+}
+
+.nav {
+  border-bottom: 1px solid #f2f3f4;
+  color: #b7b7b7;
+}
+
+.nav li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #c6c6c6;
+}

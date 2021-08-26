@@ -1,0 +1,37 @@
+.product-hero-image {
+  width: 700px;
+  height: 350px;
+  background-image: url(images/product/product-header.jpg);
+  background-size: cover;
+  position: relative;
+}
+
+.product-hero-text {
+  position: absolute;
+  top: 25%;
+  bottom: 25%;
+  left: 20px;
+  padding-left: 30px;
+  padding-right: 45%;
+  color: white;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+
+.product-image-1 {
+  width: 75%;
+}
+
+.care-command {
+  padding: 30px 10px;
+}
+
+.grey-text {
+  color: #6e6e6e;
+}
+
+.blue-link {
+  color: #294464;
+}
