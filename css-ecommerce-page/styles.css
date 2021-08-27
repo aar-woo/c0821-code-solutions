@@ -1,0 +1,90 @@
+body {
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+.col-full {
+  flex-basis: 100%;
+}
+
+.col-fifth {
+  flex-basis: 20%;
+}
+
+.height-220 {
+  height: 220px;
+}
+
+.dress1 {
+  background-image: url(images/dress1.jpeg);
+  background-size: cover;
+  background-position: top;
+}
+
+.ysl-bag {
+  background-image: url(images/ysl-bag.jpeg);
+  background-size: cover;
+  background-position: top;
+}
+
+.tiffany-key {
+  background-image: url(images/key.jpeg);
+  background-size: cover;
+  background-position: top;
+}
+
+.lv-bag {
+  background-image: url(images/lv-bag.jpg);
+  background-size: cover;
+  background-position: top;
+}
+
+.dress2 {
+  background-image: url(images/dress2.jpeg);
+  background-size: cover;
+  background-position: top;
+}
+
+.cover {
+  /* width: 150px; */
+  object-fit: contain;
+}
+
+.border-left {
+  border-left: 1px solid;
+  padding-right: 3px;
+}
+
+.pink-highlight {
+  background-color: #fff2e6;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.grey-text {
+  color: #e3e3e3;
+}
+
+.black-text {
+  color: black;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.margin-lr {
+  margin-left: 5px;
+  margin-right: 5px;
+}
