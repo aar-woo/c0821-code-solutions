@@ -25,7 +25,7 @@ function lastChars(length, string) {
     backwardStr += string[i];
   }
   for (var j = backwardStr.length - 1; j >= 0; j--) {
-    newStr += backwardStr[i];
+    newStr += backwardStr[j];
   }
   return newStr;
 }
