@@ -15,17 +15,13 @@
 
 function lastChars(length, string) {
   var newStr = '';
-  var backwardStr = '';
   var usedLength;
   if (length > string.length) {
     return string;
   }
   usedLength = string.length - length;
-  for (var i = string.length - 1; i >= usedLength; i--) {
-    backwardStr += string[i];
-  }
-  for (var j = backwardStr.length - 1; j >= 0; j--) {
-    newStr += backwardStr[j];
+  for (var i = usedLength; i < string.length; i++) {
+    newStr += string[i];
   }
   return newStr;
 }
