@@ -13,14 +13,17 @@
 
 var $bulb = document.querySelector('.bulb');
 var $container = document.querySelector('.container');
+var isDark = true;
 
 function onClick(event) {
-  if ($bulb.className === 'bulb bulb-dark') {
+  if (isDark) {
     $bulb.className = 'bulb bulb-light';
     $container.className = 'container container-light';
+    isDark = false;
   } else {
     $bulb.className = 'bulb bulb-dark';
     $container.className = 'container container-dark';
+    isDark = true;
   }
 }
 
