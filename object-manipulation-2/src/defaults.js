@@ -22,7 +22,3 @@ function defaults(target, source) {
     }
   }
 }
-
-/*
- - look at each
-*/
