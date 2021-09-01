@@ -1,96 +1,9 @@
 /* exported isAnagram */
-/*
-  - create storage for output, set equal to true
-  - create storage for first string without spaces
-  - create storage for second string without spaces
-  - look at each character in first string
-    - if character is not a space
-      - add character to storage for first string without spaces
-  - look at each character in second string
-    - if character is not a space
-      - add character to storage for second string without spaces
-  - create storage for booleans if characters are in first string
-  - look at each character in second string no space
-    - create storage for boolean if character in second string matches first, set equal to false
-    - look at each character in first string
-      - if character in second string matches character in first string
-        - make the value for the boolean true and add to storage for booleans
-      - add to storage for booleans
-*/
-
-// function isAnagram(firstString, secondString) {
-//   var firstStringNoSpace = '';
-//   var secondStringNoSpace = '';
-//   var isIn = [];
-//   for (var i = 0; i < firstString.length; i++) {
-//     if (firstString[i] !== ' ') {
-//       firstStringNoSpace += firstString[i];
-//     }
-//   }
-//   for (var i = 0; i < secondString.length; i++) {
-//     if (secondString[i] !== ' ') {
-//       secondStringNoSpace += secondString[i];
-//     }
-//   }
-//   for (var i = 0; i < secondStringNoSpace.length; i++) {
-//     var inFirst = false;
-//     for (var j = 0; j < firstStringNoSpace.length; j++) {
-//       if (secondStringNoSpace[i] === firstStringNoSpace[j]) {
-//         inFirst = true;
-//       }
-//     }
-//     isIn.push(inFirst);
-//   }
-//   console.log(isIn);
-// }
-
-/*
-  - check if each letter in second string is in first string
-    - and if letter is in first string, the same number of that letter is in first string (2 a's in both)
-
-*/
-/*
-  - put the letters of first string in an array
-  - look at each letter in second string one by one
-    - look at each item in array one by one
-      - if the letter in string matches the item in array
-        - remove item from array
-      - otherwise
-        - return false
-    - return true
-*/
-function isAnagram(firstString, secondString) {
-  var firstStringNoSpace = [];
-  var secondStringNoSpace = '';
-
-  for (var a = 0; a < firstString.length; a++) {
-    if (firstString[a] !== ' ') {
-      firstStringNoSpace.push(firstString[a]);
-    }
-  }
-  for (var b = 0; b < secondString.length; b++) {
-    if (secondString[b] !== ' ') {
-      secondStringNoSpace += secondString[b];
-    }
-  }
-  for (var i = 0; i < secondStringNoSpace.length; i++) {
-    if (i === secondStringNoSpace.length - 1 && firstStringNoSpace.length === 0) {
-      return true;
-    }
-    for (var j = 0; j < firstStringNoSpace.length; j++) {
-      if (secondStringNoSpace[i] === firstStringNoSpace[j]) {
-        firstStringNoSpace.splice(j, 1);
-      } else {
-        return false;
-      }
-    }
-  }
-  return true;
-}
 
 /*
   - create objects for each string
   - loop through strings and create a property for each letter
+    - if property exists, add one to the value
   - value as the count of how many of that letter are in the string
   - compare objects to each other with for in loops
     - letter and value boolean set to false
@@ -101,5 +14,89 @@ function isAnagram(firstString, secondString) {
       - return false
   - return true;
     and the property value (num count) is the same
-
 */
+/*
+  - create storage for first string as an object
+  - create storage for second string as an object
+  - look at each character in first string one by one
+    - create boolean for if the character is in first object and set to false
+    - look at each key in first string object
+      - if character in first string is equal to key in object
+        - make boolean true for character in object
+    - if boolean for character in object is true
+      - add one to the value for the property in object at the first string at index
+    - otherwise
+      - create a new property in object with the name as the first string at index and set equal to one
+  -Repeat for second string and second object
+  -
+*/
+function isAnagram(firstString, secondString) {
+  var firstStringObj = {};
+  var secondStringObj = {};
+  for (var i = 0; i < firstString.length; i++) {
+    var inObj = false;
+    for (var key in firstStringObj) {
+      if (firstString[i] === key) {
+        inObj = true;
+      }
+    }
+    if (inObj === true) {
+      firstStringObj[firstString[i]] += 1;
+    } else {
+      firstStringObj[firstString[i]] = 1;
+    }
+  }
+  for (var j = 0; j < secondString.length; j++) {
+    var inSecondObj = false;
+    for (var secondKey in secondStringObj) {
+      if (secondString[j] === secondKey) {
+        inSecondObj = true;
+      }
+    }
+    if (inSecondObj === true) {
+      secondStringObj[secondString[j]] += 1;
+    } else {
+      secondStringObj[secondString[j]] = 1;
+    }
+  }
+  for (var letterFirst in firstStringObj) {
+    var letterInBoth = false;
+    var letterAndValueEqual = false;
+    for (var letterSecond in secondStringObj) {
+      if (letterFirst === letterSecond) {
+        letterInBoth = true;
+        if (firstStringObj[letterFirst] === secondStringObj[letterSecond]) {
+          letterAndValueEqual = true;
+        }
+      }
+    }
+    if (letterInBoth === false || letterAndValueEqual === false) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/*
+ - look at each key in the first object
+  - create boolean for if the property names match, set to false
+  - create boolean for if the property and value are the same, set to false
+  - look at each key in the second object
+    - if the property name in the first object matces the property name in the second object
+      - set boolean for the letter in both to true
+      - if the value at these propertyies match
+        - set boolean for letter and value to true
+  - if either boolean letter in both or letter and value is false
+    - return false
+- return true
+*/
+
+// - compare objects to each other with for in loops
+//   - letter and value boolean set to false
+//     - if the property name is the same
+//       - check if property value is the same
+//         - set letter and value boolean to true
+//           - if letter and value boolean is false
+//             - return false
+//               - return true;
+// and the property value(num count) is the same
