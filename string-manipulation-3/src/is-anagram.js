@@ -28,7 +28,17 @@
     - otherwise
       - create a new property in object with the name as the first string at index and set equal to one
   -Repeat for second string and second object
-  -
+  - look at each key in the first object
+    - create boolean for if the property names match, set to false
+    - create boolean for if the property and value are the same, set to false
+    - look at each key in the second object
+      - if the property name in the first object matces the property name in the second object
+        - set boolean for the letter in both to true
+        - if the value at these propertyies match
+          - set boolean for letter and value to true
+    - if either boolean letter in both or letter and value is false
+      - return false
+  - return true
 */
 function isAnagram(firstString, secondString) {
   var firstStringObj = {};
@@ -76,20 +86,6 @@ function isAnagram(firstString, secondString) {
   }
   return true;
 }
-
-/*
- - look at each key in the first object
-  - create boolean for if the property names match, set to false
-  - create boolean for if the property and value are the same, set to false
-  - look at each key in the second object
-    - if the property name in the first object matces the property name in the second object
-      - set boolean for the letter in both to true
-      - if the value at these propertyies match
-        - set boolean for letter and value to true
-  - if either boolean letter in both or letter and value is false
-    - return false
-- return true
-*/
 
 // - compare objects to each other with for in loops
 //   - letter and value boolean set to false
