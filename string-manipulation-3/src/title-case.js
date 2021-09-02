@@ -17,18 +17,50 @@ function titleCase(title) {
     'as', 'at', 'by', 'for', 'in', 'of', 'on', 'per', 'to'];
   var titleCasedStr = '';
   var currWord = '';
+
   for (var i = 0; i < title.length; i++) {
-    if (i === 0 || title[i - 1] === '-' || title[i - 1] === ' ') {
+    if (i === 0 || title[i - 1] === '-' || title[i - 1] === ' ' || title[i - 2] === ':') {
       currWord += title[i].toUpperCase();
     } else if (title[i] === ' ') {
-      if (titleCasedStr !== '' && currWord.length >= 3 && currWord !== 'JavaScript' && currWord !== 'API') {
+      if (titleCasedStr === '') {
+        titleCasedStr += currWord;
+        currWord = '';
+        titleCasedStr += title[i];
+      } else if (titleCasedStr !== '' && currWord.length >= 4 && currWord !== 'Javascript' && currWord !== 'Api') {
+        titleCasedStr += currWord;
+        currWord = '';
+        titleCasedStr += title[i];
+      } else if (currWord === 'Javascript') {
+        currWord = 'JavaScript';
+        titleCasedStr += currWord;
+        currWord = '';
+        titleCasedStr += title[i];
+      } else if (currWord === 'Api') {
+        currWord = 'API';
+        titleCasedStr += currWord;
+        currWord = '';
+        titleCasedStr += title[i];
+      } else if (currWord.length < 4) {
         for (var j = 0; j < minorWords.length; j++) {
-          if (currWord) {
-            return; // work from here
+          if (currWord.toLowerCase() === minorWords[j]) {
+            currWord = currWord.toLowerCase();
           }
         }
+        titleCasedStr += currWord;
+        currWord = '';
+        titleCasedStr += title[i];
+      } else {
+        titleCasedStr += currWord;
+        currWord = '';
+        titleCasedStr += title[i];
       }
+    } else {
+      currWord += title[i];
     }
   }
-
+  if (currWord === 'Api') {
+    currWord = currWord.toUpperCase();
+  }
+  titleCasedStr += currWord;
+  return titleCasedStr;
 }
