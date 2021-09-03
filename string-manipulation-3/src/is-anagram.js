@@ -1,20 +1,4 @@
 /* exported isAnagram */
-
-/*
-  - create objects for each string
-  - loop through strings and create a property for each letter
-    - if property exists, add one to the value
-  - value as the count of how many of that letter are in the string
-  - compare objects to each other with for in loops
-    - letter and value boolean set to false
-    - if the property name is the same
-      - check if property value is the same
-        - set letter and value boolean to true
-    - if letter and value boolean is false
-      - return false
-  - return true;
-    and the property value (num count) is the same
-*/
 /*
   - create storage for first string as an object
   - create storage for second string as an object
@@ -40,6 +24,7 @@
       - return false
   - return true
 */
+
 function isAnagram(firstString, secondString) {
   var firstStringObj = {};
   var secondStringObj = {};
@@ -86,13 +71,3 @@ function isAnagram(firstString, secondString) {
   }
   return true;
 }
-
-// - compare objects to each other with for in loops
-//   - letter and value boolean set to false
-//     - if the property name is the same
-//       - check if property value is the same
-//         - set letter and value boolean to true
-//           - if letter and value boolean is false
-//             - return false
-//               - return true;
-// and the property value(num count) is the same

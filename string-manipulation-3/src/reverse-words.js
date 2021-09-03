@@ -1,25 +1,4 @@
 /* exported reverseWords */
-/*
-  - create storage for output
-  - look at each character one by one from the back
-    - create storage for the current word
-    - if the character is a space
-      - add the current word to output
-      - clear current word
-      - add character to current word
-    - otherwise
-      - add character to current word
-  - add last value for current word to output
-  - look at each character one by one from the back
-    -if the character is a space
-      - add the current word to output
-      - clear current word
-      - add character to current word
-    - otherwise
-      - add character to current word
-    - add last value for current word to output
-  - return output
-*/
 
 /*
   - create storage for output
