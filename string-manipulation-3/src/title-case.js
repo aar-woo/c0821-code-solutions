@@ -26,7 +26,12 @@ function titleCase(title) {
         titleCasedStr += currWord;
         currWord = '';
         titleCasedStr += title[i];
-      } else if (titleCasedStr !== '' && currWord.length >= 4 && currWord !== 'Javascript' && currWord !== 'Api') {
+      } else if (titleCasedStr !== '' && currWord.length >= 4 && currWord !== 'Javascript' && currWord !== 'Javascript:' && currWord !== 'Api') {
+        titleCasedStr += currWord;
+        currWord = '';
+        titleCasedStr += title[i];
+      } else if (currWord === 'Javascript:') {
+        currWord = 'JavaScript:';
         titleCasedStr += currWord;
         currWord = '';
         titleCasedStr += title[i];
