@@ -30,11 +30,10 @@ function isAnagram(firstString, secondString) {
   var secondStringObj = {};
   for (var i = 0; i < firstString.length; i++) {
     var inObj = false;
-    for (var key in firstStringObj) {
-      if (firstString[i] === key) {
-        inObj = true;
-      }
+    if (firstStringObj[firstString[i]]) {
+      inObj = true;
     }
+
     if (inObj === true) {
       firstStringObj[firstString[i]] += 1;
     } else {
@@ -43,29 +42,27 @@ function isAnagram(firstString, secondString) {
   }
   for (var j = 0; j < secondString.length; j++) {
     var inSecondObj = false;
-    for (var secondKey in secondStringObj) {
-      if (secondString[j] === secondKey) {
-        inSecondObj = true;
-      }
+    if (secondStringObj[secondString[j]]) {
+      inSecondObj = true;
     }
+
     if (inSecondObj === true) {
       secondStringObj[secondString[j]] += 1;
     } else {
       secondStringObj[secondString[j]] = 1;
     }
   }
+
   for (var letterFirst in firstStringObj) {
-    var letterInBoth = false;
     var letterAndValueEqual = false;
     for (var letterSecond in secondStringObj) {
       if (letterFirst === letterSecond) {
-        letterInBoth = true;
         if (firstStringObj[letterFirst] === secondStringObj[letterSecond]) {
           letterAndValueEqual = true;
         }
       }
     }
-    if (letterInBoth === false || letterAndValueEqual === false) {
+    if (letterAndValueEqual === false) {
       return false;
     }
   }
