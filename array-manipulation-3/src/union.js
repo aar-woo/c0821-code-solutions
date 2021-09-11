@@ -19,20 +19,15 @@
 */
 function union(first, second) {
   var union = [];
-  var common = [];
   for (var i = 0; i < first.length; i++) {
-    for (var j = 0; j < second.length; j++) {
-      if (first[i] === second[j]) {
-        common.push(first[i]);
-      }
-    }
     union.push(first[i]);
   }
   for (var x = 0; x < second.length; x++) {
     var inCommon = false;
-    for (var y = 0; y < common.length; y++) {
-      if (second[x] === common[y]) {
+    for (var y = 0; y < union.length; y++) {
+      if (second[x] === union[y]) {
         inCommon = true;
+
       }
     }
     if (inCommon === false) {

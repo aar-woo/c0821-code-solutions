@@ -12,7 +12,7 @@
 function flatten(array) {
   var flatArr = [];
   for (var i = 0; i < array.length; i++) {
-    if (typeof array[i] === 'object') {
+    if (Array.isArray(array[i])) {
       for (var j = 0; j < array[i].length; j++) {
         flatArr.push(array[i][j]);
       }

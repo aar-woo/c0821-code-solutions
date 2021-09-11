@@ -15,17 +15,15 @@
 
 function unique(array) {
   var uniqueArr = [];
-  var used = [];
   for (var i = 0; i < array.length; i++) {
     var inArr = false;
-    for (var j = 0; j < used.length; j++) {
-      if (array[i] === used[j]) {
+    for (var j = 0; j < uniqueArr.length; j++) {
+      if (array[i] === uniqueArr[j]) {
         inArr = true;
       }
     }
     if (inArr === false) {
       uniqueArr.push(array[i]);
-      used.push(array[i]);
     }
   }
   return uniqueArr;
