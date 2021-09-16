@@ -22,8 +22,6 @@ function changeImg() {
 }
 
 function startCarousel() {
-  clearInterval(onLoadIntervalId);
-  var newIntervalId;
   newIntervalId = setInterval(changeImg, 3000);
   clearInterval(newIntervalId - 1);
 }
@@ -70,4 +68,4 @@ function jumpToImg(event) {
 
 $dotsDiv.addEventListener('click', jumpToImg);
 
-var onLoadIntervalId = setInterval(changeImg, 3000);
+var newIntervalId = setInterval(changeImg, 3000);
