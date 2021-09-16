@@ -78,28 +78,28 @@ deck = _.shuffle(deck);
   - return winning player
 */
 
-// function winner(players) {
-//   var highestHand = 0;
-//   var winningPlayer;
-//   for (var playerNum = 0; playerNum < players.length; playerNum++) {
-//     var currentPlayerHand = 0;
-//     for (var cardNum = 0; cardNum < players[playerNum].hand.length; cardNum++) {
-//       if (players[playerNum].hand[cardNum].rank === 'Jack' || players[playerNum].hand[cardNum].rank === 'Queen' ||
-//       players[playerNum].hand[cardNum].rank === 'King') {
-//         currentPlayerHand += 10;
-//       } else if (players[playerNum].hand[cardNum].rank === 'Ace') {
-//         currentPlayerHand += 11;
-//       } else {
-//         currentPlayerHand += players[playerNum].hand[cardNum].rank;
-//       }
-//     }
-//     if (currentPlayerHand > highestHand) {
-//       highestHand = currentPlayerHand;
-//       winningPlayer = players[playerNum];
-//     }
-//   }
-//   return winningPlayer;
-// }
+function winner(players) {
+  var highestHand = 0;
+  var winningPlayer;
+  for (var playerNum = 0; playerNum < players.length; playerNum++) {
+    var currentPlayerHand = 0;
+    for (var cardNum = 0; cardNum < players[playerNum].hand.length; cardNum++) {
+      if (players[playerNum].hand[cardNum].rank === 'Jack' || players[playerNum].hand[cardNum].rank === 'Queen' ||
+      players[playerNum].hand[cardNum].rank === 'King') {
+        currentPlayerHand += 10;
+      } else if (players[playerNum].hand[cardNum].rank === 'Ace') {
+        currentPlayerHand += 11;
+      } else {
+        currentPlayerHand += players[playerNum].hand[cardNum].rank;
+      }
+    }
+    if (currentPlayerHand > highestHand) {
+      highestHand = currentPlayerHand;
+      winningPlayer = players[playerNum];
+    }
+  }
+  return winningPlayer;
+}
 
 // console.log(winner(players));
 // Generalize so any number of cards can be dealt
@@ -113,6 +113,9 @@ function runGame(playersArr, numCards) {
   }
 
   var highestHand = 0;
+  var allHands = [];
+  var tieValue = 0;
+  var tiedPlayers = [];
   var winningPlayer;
   for (var playerNum = 0; playerNum < playersArr.length; playerNum++) {
     var currentPlayerHand = 0;
@@ -126,13 +129,30 @@ function runGame(playersArr, numCards) {
         currentPlayerHand += playersArr[playerNum].hand[cardNum].rank;
       }
     }
+    // allHands[playersArr[playerNum].name] = currentPlayerHand;
+    allHands.push(currentPlayerHand);
     if (currentPlayerHand > highestHand) {
       highestHand = currentPlayerHand;
       winningPlayer = playersArr[playerNum];
     }
   }
+  var isTie = false;
+
+  for (var hand = 0; hand < allHands.length; hand++) {
+    if (allHands[hand] === Math.max(allHands)) {
+      isTie = true;
+      tiedPlayers.push(playersArr[hand]);
+      tiedPlayers.push(winningPlayer);
+    }
+  }
+  if (isTie) {
+    console.log('tie');
+    winner(tiedPlayers);
+  }
+
+  console.log('all hands', allHands);
   return winningPlayer;
 }
 console.log('deck before:', deck);
 console.log(runGame(players, 4));
-console.log('deck after:', deck);
+// console.log('deck after:', deck);
