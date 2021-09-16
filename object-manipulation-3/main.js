@@ -113,7 +113,7 @@ function runGame(playersArr, numCards) {
   }
 
   var highestHand = 0;
-  var allHands = [];
+  var allHands = {};
   var tieValue = 0;
   var tiedPlayers = [];
   var winningPlayer;
@@ -129,30 +129,30 @@ function runGame(playersArr, numCards) {
         currentPlayerHand += playersArr[playerNum].hand[cardNum].rank;
       }
     }
-    // allHands[playersArr[playerNum].name] = currentPlayerHand;
-    allHands.push(currentPlayerHand);
+    playersArr[playerNum].playerHand = currentPlayerHand;
     if (currentPlayerHand > highestHand) {
       highestHand = currentPlayerHand;
       winningPlayer = playersArr[playerNum];
     }
   }
-  var isTie = false;
-
-  for (var hand = 0; hand < allHands.length; hand++) {
-    if (allHands[hand] === Math.max(allHands)) {
-      isTie = true;
-      tiedPlayers.push(playersArr[hand]);
-      tiedPlayers.push(winningPlayer);
+  for (var i = 0; i < playersArr.length; i++) {
+    // console.log('each player hand', playersArr[i].playerHand);
+    if (playersArr[i].playerHand === highestHand &&
+       playersArr[i].name !== winningPlayer.name) {
+      tiedPlayers.push(playersArr[i]);
     }
   }
-  if (isTie) {
-    console.log('tie');
-    winner(tiedPlayers);
+  console.log('winner before tie run', winningPlayer);
+  if (tiedPlayers.length !== 0) {
+    tiedPlayers.push(winningPlayer);
+    console.log('tie run');
+    runGame(tiedPlayers, numCards);
   }
 
-  console.log('all hands', allHands);
+  console.log('playersArr', playersArr);
+  console.log('tied players', tiedPlayers);
   return winningPlayer;
 }
+
 console.log('deck before:', deck);
-console.log(runGame(players, 4));
-// console.log('deck after:', deck);
+console.log(runGame(players, 2));
