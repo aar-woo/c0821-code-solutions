@@ -136,7 +136,7 @@ function runGame(playersArr, numCards) {
     }
   }
   for (var i = 0; i < playersArr.length; i++) {
-    // console.log('each player hand', playersArr[i].playerHand);
+
     if (playersArr[i].playerHand === highestHand &&
        playersArr[i].name !== winningPlayer.name) {
       tiedPlayers.push(playersArr[i]);
@@ -145,14 +145,22 @@ function runGame(playersArr, numCards) {
   console.log('winner before tie run', winningPlayer);
   if (tiedPlayers.length !== 0) {
     tiedPlayers.push(winningPlayer);
+    console.log('tied players', tiedPlayers);
     console.log('tie run');
+    for (var tiedPlayer = 0; tiedPlayer < tiedPlayers.length; tiedPlayer++) {
+      console.log('player:', tiedPlayers[tiedPlayer]);
+      tiedPlayers[tiedPlayer].playerHand = 0;
+      tiedPlayers[tiedPlayer].hand = [];
+      console.log('player after hand clear', tiedPlayers[tiedPlayer]);
+
+    }
     runGame(tiedPlayers, numCards);
   }
 
   console.log('playersArr', playersArr);
-  console.log('tied players', tiedPlayers);
+  // console.log('tied players', tiedPlayers);
   return winningPlayer;
 }
 
-console.log('deck before:', deck);
+// console.log('deck before:', deck);
 console.log(runGame(players, 2));
