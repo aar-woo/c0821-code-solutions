@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Carousel</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container flex flex-wrap">
+    <div class="row width-100 align-items-center justify-between margin-tb">
+      <div class="colum-third margin-lr">
+        <a href="#"><i class="fas fa-chevron-left arrow"></i></a>
+      </div>
+      <div class="column-third text-align-center images">
+        <img class="img view" src="images/001.png">
+        <img class="img hidden" src="images/004.png">
+        <img class="img hidden" src="images/007.png">
+        <img class="img hidden" src="images/025.png">
+        <img class="img hidden" src="images/039.png">
+      </div>
+      <div class="colum-third margin-lr">
+        <a href="#"><i class="fas fa-chevron-right arrow"></i></a>
+      </div>
+    </div>
+    <div class="row justify-center width-100">
+      <div class="colum-full dots">
+        <a href="#"><i class="fas fa-circle" data-view="first"></i></a>
+        <a href="#"><i class="far fa-circle" data-view="second"></i></a>
+        <a href="#"><i class="far fa-circle" data-view="third"></i></a>
+        <a href="#"><i class="far fa-circle" data-view="fourth"></i></a>
+        <a href="#"><i class="far fa-circle" data-view="fifth"></i></a>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
