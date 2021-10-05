@@ -1,0 +1,764 @@
+
+
+  Command-lines-basics history
+  692  cd comman-line-basics
+  693  cd command-lines-basics
+  694  cd command-line-basics
+  695  pwd
+  696  man man
+  697  man cat
+  698  cat laziness.txt
+  699  cat impatience.txt
+  700  cat hubris.txt
+  701  cat laziness.txt impatience.txt hubris.txt > three-virtues.txt
+  702  cat three-virtues.txt
+  703  man ls
+  704  ls
+  705  ls -a
+  706  la -F
+  707  ls lfz-staff/
+  708  ls -a lfz-staff/
+  709  ls -F lfz-staff/
+  710  ls -aF lfz-staff/ > lfz-staff/contents.txt
+  711  cat lfz-staff/contents.txt
+  712  man pwd
+  713  pwd
+  714  pwd > i-was-here.txt
+  715  clear
+  716  ls
+  717  cat i-was-here.txt
+  718  man echo
+  719  echo 'Hello, World!'
+  720  echo 'Hello, World!' > hello.txt
+  721  ls
+  722  cat hello.txt
+  723  man touch
+  724  touch tag-youre-it.txt
+  725  touch snoot/boop.txt
+  726  ls snoot/
+  727  man mkdir
+  728  mkdir parent
+  729  ls
+  730  man mkdir
+  731  mkdir -p parent/child
+  732  ls
+  733  ls parent
+  734  mkdir -p parent/child/grandchild
+  735  ls parent
+  736  ls child
+  737  ls parent/child
+  738  touch parent/child/grandchild/.gitkeep
+  739  ls -a parent
+  740  ls parent/child/grandchild
+  741  la -a parent/child/grandchild
+  742  man mv
+  743  mv pokiemans pokemon
+  744  ls
+  745  man rm
+  746  rm lol.txt
+  747  ls
+  748  rm -r kill-me
+  749  ls
+  750  man cp
+  751  cp and-then.txt no-and-then.txt
+  752  ls
+  753  cat and-then.txt no-and-then.txt
+  754  man history
+  755  history
+  756  history > command-history.txt
+
+
+
+
+
+    1  exit
+    2  whoami
+    3  git config --global user.name "Aaron Woo"
+    4  git config --global user.email "awoo@chapman.edu"
+    5  git config --global --list
+    6  exit
+    7  pwd
+    8  ls
+    9  cd repos
+   10  ls
+   11  cd c0821-code-solutions/
+   12  cd..
+   13  cd ..
+   14  http http://example.com
+   15  http --verbose https://example.com
+   16  ls
+   17  cd repos
+   18  ls
+   19  cd c0821-code-solutions/
+   20  cd http-messages
+   21  http --body GET https://jsonplaceholder.typicode.com/users > users.json
+   22  http --body GET https://example.com > index.html
+   23  cd ..
+   24  pwd
+   25  git status
+   26  git add http-messages
+   27  git status
+   28  git commit -m "Completed http-messages exercise."
+   29  git push origin http-messages
+   30  exit
+   31  pwd
+   32  ls
+   33  cd repos
+   34  cd c0821-code-solutions/
+   35  git status
+   36  git branch javascript-ajax
+   37  git switch javascript-ajax
+   38  git status
+   39  git add javascript-ajax
+   40  git status
+   41  git commit -m "Completed javascript-ajax exercise."
+   42  git push origin javascript-ajax
+   43  git status
+   44  git switch master
+   45  pwd
+   46  cd ..
+   47  ls
+   48  cd scratch
+   49  dev-env
+   50  http https://api.jikan.moe/v3/1/episodes/2
+   51  http https://api.jikan.moe/v3/anime/1/episodes/2
+   52  http https://api.jikan.moe/v3/anime/1
+   53  cd repos
+   54  cd ..
+   55  ls
+   56  cd c0821-code-solutions/
+   57  git status
+   58  cd ..
+   59  ls
+   60  cd scratch
+   61  cd ~/repos
+   62  pwd
+   63  git clone git@github.com:aar-woo/ajax-project.git
+   64  cd ajax-project
+   65  npm ci
+   66  git status
+   67  git pull origin master
+   68  branch issue-1-search-anime
+   69  git switch issue-1-search-anime
+   70  git branch issue-1-search-anime
+   71  git switch issue-1-search-anime
+   72  git status
+   73  git add .
+   74  git status
+   75  git commit -m "Created base layout of html and css"
+   76  git push origin issue-1-search-anime
+   77  git status
+   78  git add index.html
+   79  git commit -m "Add a div[data-view='search-results'] #1"
+   80  git status
+   81  git add .
+   82  git commit -m "Add dummy anime search results to unordered list."
+   83  git push origin issue-1-search-anime
+   84  git status
+   85  git add .
+   86  git status
+   87  git commit -m "in progress" --no-verify
+   88  git status
+   89  git stat us
+   90  git status
+   91  git add .
+   92  git commit -m " Define a function that takes an anime object as a parameter and returns a DOM tree that matches a dummy anime search result. #1"
+   93  git push origin issue-1-search-anime
+   94  git status
+   95  git add .
+   96  git status
+   97  git commit -m " Listen for clicks on the search icon and: #1"
+   98  git status
+   99  git add js/main.js
+  100  git status
+  101  git commit -m " Listen for clicks on the search icon and: #1"
+  102  git add js/main.js
+  103  git status
+  104  git commit -m " Listen for clicks on the search icon and: #1"
+  105  git status
+  106  git push origin issue-1-search-anime
+  107  git status
+  108  git add js/main.js
+  109  git status
+  110  git commit -m "Define a function that opens a GET request from Jikan API for a string, the value in search bar. #1"
+  111  git status
+  112  git add index.html js/main.js
+  113  git status
+  114  git commit -m "Listen for 'load' event on the request object and have a function that loops through the first 5 results from the response and calls the function to create a DOM tree for each result and appends it to the page. #1"
+  115  git status
+  116  git add .
+  117  git status
+  118  git commit -m "Create switch views function and call it in onSearch function to switch to search-results views."
+  119  git status
+  120  git add index.html
+  121  git status
+  122  git commit -m "Create switch views function and call it in onSearch function to switch to search-results views. #1"
+  123  git status
+  124  git add js/main.js
+  125  git commit -m "Create switch views function and call it in onSearch function to switch to search-results views."
+  126  git status
+  127  git add js/main.js
+  128  git status
+  129  git commit -m "Fill searchbar in search-results view with search value. #1"
+  130  git status
+  131  git add js/main.js
+  132  git status
+  133  git commit -m "Listen for clicks on searchbar in results, created a seperate function for clearing results, and called the on search function. #1'
+  134  "
+  135  git status
+  136  git add css/styles.css js/main.js
+  137  git status
+  138  git commit -m " Listen to clicks on search icon, clear dom tree and switch views. #1"
+  139  git status
+  140  git add .
+  141  git status
+  142  git commit -m "Ensure it looks good on mobile and desktop."
+  143  git push origin issue-1-search-anime
+  144  git status
+  145  git add .
+  146  git status
+  147  git add css/layout.css
+  148  git status
+  149  git add index.html
+  150  git status
+  151  git add js/main.js
+  152  git status
+  153  git commit -m "Completed issue-1-search-anime. #1"
+  154  git push origin issue-1-search-anime
+  155  git status
+  156  git switch master
+  157  git pull origin master
+  158  git status
+  159  git branch issue-2-add-to-watch-list
+  160  git switch issue-2-add-to-watch-list
+  161  git status
+  162  git add js/data.js
+  163  git commit -m "Add a property watchList to data model as an empty array. #2"
+  164  git status
+  165  git add index.html js/main.js
+  166  git status
+  167  git commit -m "Add to onSearch function to add each anime result object to searchList property. #2"
+  168  git status
+  169  git add .
+  170  git status
+  171  git commit -m "Add to createResult function to render this button on each result as well. #2"
+  172  git status
+  173  git add js/main.js
+  174  git status
+  175  git commit -m "Add an id to each search result on the li, assigned to mal_id property from anime result obj."
+  176  git add .
+  177  git commit -m "Add an id to each search result on the li, assigned to mal_id property from anime result obj. #2"
+  178  git status
+  179  git add js/main.js
+  180  git status
+  181  git commit -m "Add the anime result object in searchList to watchList in data model. #2"
+  182  git push origin issue-2-add-to-watch-list
+  183  git status
+  184  git add js/main.js
+  185  git status
+  186  git commit -m "Ensure searchList in data model is cleared upon new search. #2"
+  187  git status
+  188  git add .
+  189  git commit -m "Ensure watchList is saving to local storage and added anime result objects are still there after reload. #2"
+  190  git status
+  191  git add js/main.js
+  192  git status
+  193  git commit -m "in progress"
+  194  git status
+  195  git add .
+  196  git commit -m "Ensure page reloads into same page. #2"
+  197  git status
+  198  git add .
+  199  git status
+  200  git commit -m "Confirm that the user interface looks natural on both mobile and desktop screens."
+  201  git status
+  202  git commit -m "Completed issue-2-add-to-watch-list. #2"
+  203  git push origin issue-2-add-to-watch-list
+  204  git status
+  205  git switch master
+  206  git pull origin master
+  207  git status
+  208  git branch issue-3-view-watch-list
+  209  git branch --list
+  210  git switch issue-3-view-watch-list
+  211  git status
+  212  git add index.html js/main.js
+  213  git comit -m "Add a list icon to navbar. #3"
+  214  git commit -m "Add a div[data-view='watch-list'] to HTML, add empty ul to div, add list icon to navbar. #3"
+  215  git commit -m "Add a div[data-view='watch-list'] to HTML, add empty ul to div, add list icon to navbar. #3" --no-verify
+  216  git status
+  217  git add css/styles.css index.html
+  218  git status
+  219  git commit -m "Add an empty ul element to this div. #3"
+  220  git status
+  221  git add index.html js/main.js
+  222  git commit -m "Listen for clicks on the list icon and #3"
+  223  git commit -m "Listen for clicks on the list icon and #3" --no-verify
+  224  git status
+  225  git add js/main.js
+  226  git commit -m "Add to clear results function so that it clears watch list view as well. #3" --no-verify
+  227  git status
+  228  git push origin issue-3-watch-list
+  229  git push origin issue-3-view-watch-list
+  230  git status
+  231  git add index.html js/main.js
+  232  git commit -m "Ensure view switches to 'watch-list' upon adding an anime from the 'search-results' view. #3"
+  233  git status
+  234  git add js/main.js
+  235  git status
+  236  git commit -m "Completed issue-3-view-watch-list. #3"
+  237  git push origin issue-3-view-watch-list
+  238  git status
+  239  git switch master
+  240  git pull origin master
+  241  git status
+  242  git branch issue-4-delete-from-watch-list
+  243  git switch issue-4-delete-from-watch-list
+  244  git status
+  245  git add css/styles.css js/main.js
+  246  git commit -m "Add a condition to createResult() function to either add an 'add' or 'remove' button depending on the data.view. #4"
+  247  git status
+  248  git add js/main.js
+  249  git commit -m "Listen for clicks on the watch-list ul and #4" --no-verify
+  250  git status
+  251  git add js/main.js
+  252  git status
+  253  git add .
+  254  git status
+  255  git commit -m "Completed issue-4-delete-from-watch-list. #4"
+  256  git push origin issue-4-delete-from-watch-list
+  257  git status
+  258  git switch master
+  259  git pull origin master
+  260  git status
+  261  git branch issue-5-set-priority
+  262  git switch issue-5-set-priority
+  263  git status
+  264  git add .
+  265  git status
+  266  git commit -m "Add to createResult function to render result with "Priority: " and up arrow icons. #5"
+  267  git commit -m "Add to createResult function to render result with priority: and up arrow icons. #5"
+  268  git staqtus
+  269  git status
+  270  git add .
+  271  git status
+  272  git commit -m "Loop through all nodelist of arrow icons and change each arrow icon class to empty, white arrows. #5" --no-verify
+  273  git status
+  274  git add .
+  275  git status
+  276  git commit -m " Loop through the nodelist of arrow icons up until the value of the id of the event.target
+  277  , Change each arrow icon's class to filled up arrows. $5"
+  278  git status
+  279  git add js/main.js
+  280  git status
+  281  git commit -m " Loop through the nodelist of arrow icons up until the value of the id of the event.target
+  282  "
+  283  git status
+  284  git add js/main.js
+  285  git commit -m "if (data.watchList.length === 0) {
+  286      $emptyHeader.className = 'emptyHeader';
+  287  "
+  288  git commit --amend -m "Add to renderWatchList function to render by each anime object's 'priority' property value."
+  289  git status
+  290  git add js/main.js
+  291  git status
+  292  git commit -m "Ensure priority icons persist through reload. #5"
+  293  git status
+  294  git add js/main.js
+  295  git status
+  296  git commit -m "Add conditional to createResult function to only show priority on watch-list view. #5"
+  297  git status
+  298  git add js/main.js
+  299  git commit -m "Make sure that click targets are either <a> or <button> elements. #5"
+  300  git status
+  301  git add js/main.js
+  302  git commit -m "in progress"
+  303  ipconfig
+  304  ifconfig
+  305  git status
+  306  git add js/main.js
+  307  git commit -m "Clean Up."
+  308  git status
+  309  git commit -m "Completed issue-5-set-priority."
+  310  git push origin issue-5-set-priority
+  311  git status
+  312  git switch master
+  313  git pull origin master
+  314  git staus
+  315  git status
+  316  git branch issue-6-set-priority-when-adding
+  317  git branch --list
+  318  git switch issue-6-set-priority-when-adding
+  319  git status
+  320  ls
+  321  git status
+  322  cd ..
+  323  pwd
+  324  ls
+  325  cd c0821-code-solutions/
+  326  git branch --list
+  327  git status
+  328  git pull origin master
+  329  git switch object-manipulation-3
+  330  git status
+  331  git add object-manipulation-3/main.js
+  332  git status
+  333  git commit -m "Completed object-manipulation-3."
+  334  git push origin object-manipulation-3
+  335  git switch master
+  336  git status
+  337  cd ..
+  338  ls
+  339  cd ajax-project
+  340  git status
+  341  git add js/main.js
+  342  git status
+  343  git commit -m "Add to createResult function to render anime results in search results with 'priority' and up arrow icons."
+  344  git status
+  345  git add js/main.js
+  346  git status
+  347  git commit -m "Alter setPriority function to be able to set priority to an anime in 'search-results' view and 'watch-list' view. #6"
+  348  git push origin issue-6-set-priority-when-adding
+  349  git status
+  350  git add js/main.js
+  351  git status
+  352  git commit -m " Remove renderWatchList function from setPriority function so that setting priority on search Results does not switch to 'watch list' immediately after setting priority, but switches on 'add' click. #6"
+  353  git status
+  354  git add js/main.js
+  355  git commit -m "Create separate function for setting priority in 'watch-list' view that calls setPriority and renderWatchList(). #6"
+  356  git status
+  357  git add js/main.js
+  358  git status
+  359  git commit -m "Added eventListener for keydown Enter to be able to initiate search on pressing Enter key. #6"
+  360  git status
+  361  git add css/styles.css js/main.js
+  362  git status
+  363  git commit -m "Revised functions for initiating search on pressing Enter key. #6"
+  364  git status
+  365  git add css/styles.css index.html
+  366  git status
+  367  git commit -m "Adjusted CSS and HTML so that top navbar is fixed. #6"
+  368  git status
+  369  git add css/styles.css
+  370  git add index.html
+  371  git status
+  372  git commit -m "Adjusted container's bottom margin so the last entry is fully shown. #6"
+  373  git status
+  374  git add css/styles.css js/main.js
+  375  git status
+  376  git commit -m "Completed issue-6-set-priority-when-adding. #6"
+  377  git push origin issue-6-set-priority-when-adding
+  378  git status
+  379  git switch master
+  380  git pull origin master
+  381  git status
+  382  ls
+  383  cd ajax-project
+  384  cd ..
+  385  ls
+  386  cd ajax-project
+  387  git remote set-url origin git@github.com:aar-woo/anime-log.git
+  388  cd ~/repos
+  389  mv ajax-project anime-log
+  390  ls
+  391  cd anime-log
+  392  git branch project-polish
+  393  git switch project-polish
+  394  git status
+  395  git add README.md images/favicon.ico index.html
+  396  git status
+  397  git commit -m "Updated title, icon, and README."
+  398  git status
+  399  git branch
+  400  git add .
+  401  git status
+  402  git commit -m "Completed project-polish."
+  403  git status
+  404  git push origin project-polish
+  405  git status
+  406  git switch master
+  407  git pull origin master
+  408  git branch project-code
+  409  git status
+  410  git ls
+  411  git branch --list
+  412  git switch project-code
+  413  git status
+  414  git add .
+  415  git status
+  416  git commit -m "Deleted all files no longer needed."
+  417  git status
+  418  git add .
+  419  git status
+  420  git commit -m "Changed all files and directory names to lower-kebab-case."
+  421  git status
+  422  git add index.html
+  423  git status
+  424  git commit -m "Put input elements and button for search bars into a form element."
+  425  git status
+  426  git add index.html
+  427  git status
+  428  git commit -m "Removed all commented out code."
+  429  git status
+  430  git add css/styles.css index.html js/main.js
+  431  git status
+  432  git commit -m "Change all CSS class names to lower-kebab-case."
+  433  git status
+  434  git add .
+  435  git status
+  436  git commit -m "Javscript remove all commented out code."
+  437  git status
+  438  git commit -m "Completed project-code."
+  439  git push origin project-code
+  440  git status
+  441  git switch master
+  442  git pull origin master
+  443  git status
+  444  git branch project-interfaces
+  445  git branch --list
+  446  git switch project-interfaces
+  447  git status
+  448  git add css/styles.css index.html
+  449  git status
+  450  git commit -m "All buttons/clickables show pointer cursor."
+  451  git status
+  452  git add css/styles.css
+  453  git status
+  454  git add css/styles.css
+  455  git status
+  456  git commit -m "Ensured mobile responsiveness and fluid layout through breakpoints."
+  457  git status
+  458  git add css/styles.css
+  459  git add index.html js/main.js
+  460  git status
+  461  git commit -m "Added loadbar during API request."
+  462  git status
+  463  git branch --list
+  464  git switch issue-5-delete-from-watch-list
+  465  git switch issue-5-set-priority
+  466  git add .
+  467  git status
+  468  git commit -m "In Progress."
+  469  git commit -m "in progress" --no-verify
+  470  git switch issue-5-set-priority
+  471  git switch project-interfaces
+  472  git status
+  473  git add js/main.js
+  474  git status
+  475  git commit -m "Fixed bug that did not show search results on the first time searching."
+  476  git status
+  477  git add js/main.js
+  478  git status
+  479  git commit -m "Display message for no results found when request is unsuccessful for search value."
+  480  git status
+  481  git add .
+  482  git status
+  483  git commit -m "Added message display for network errors."
+  484  git status
+  485  git add .
+  486  git status
+  487  git commit -m "Completed project-interfaces and altered data.js to fix local storage."
+  488  git push origin project-interfaces
+  489  git status
+  490  git add js/main.js
+  491  git status
+  492  git commit -m "Added function for no results to the already existing load function and altered network error handling function to use an eventListener."
+  493  git push origin project-interfaces
+  494  git status
+  495  git pull origin master
+  496  git switch master
+  497  git pull origin master
+  498  git statu
+  499  git status
+  500  git branch updated-thumbnail
+  501  git switch updated-thumbnail
+  502  git status
+  503  git add index.html
+  504  git commit -m "Changed image url in meta tag for when sharing."
+  505  git push origin updated-thumbnail
+  506  git switch master
+  507  git pull origin master
+  508  git status
+  509  git status
+  510  git branch --list
+  511  git branch issue-7-add-to-in-progress
+  512  git switch issue-7-add-to-in-progress
+  513  git status
+  514  git add js/data.js
+  515  git commit -m "Add a property inProgress to data model as an empty array. #7"
+  516  git status
+  517  git add .
+  518  git status
+  519  git commit -m "Alter createResult function to add a 'Watch' button to entries in watchList. #7"
+  520  git status
+  521  git add js/main.js
+  522  git status
+  523  git commit -m "Created function for watchList options to either add to data.inProgressList and delete or just delete from watchList. #7"
+  524  git status
+  525  git add js/main.js
+  526  git commit -m "Deleted deleteResult function. #7"
+  527  git push origin issue-7-add-to-in-progress
+  528  git status
+  529  git add index.html
+  530  git commit -m"
+  531  Created div[data-view="in-progress"] and added an empty ul to it. #7"
+  532  git status
+  533  git add css/styles.css index.html js/main.js
+  534  git status
+  535  git commit -m "Add a header to this div with message if the in progress list is empty. #7"
+  536  git commit -m "Add a header to this div with message if the in progress list is empty. #7" --no-verify
+  537  git status
+  538  git add index.html
+  539  git commit -m "Add a vector div and "In Progress" header to div[data-view="in-progress"]. #7"
+  540  git commit -m "Add a vector div and "In Progress" header to div[data-view='in-progress']. #7" --no-verify
+  541  git commit -m "Add a vector div and 'In Progress' header to div[data-view='in-progress']. #7" --no-verify
+  542  git status
+  543  git add index.html js/main.js
+  544  git commit -m "Add an icon for in-progress view to navbars."
+  545  git status
+  546  git add index.html js/main.js
+  547  git commit -m "Edited renderWatchList function to be able to render watchList and inProgressList depending on data.view. #7"
+  548  git status
+  549  git add js/main.js
+  550  git status
+  551  git add js/main.js
+  552  git commit -m "Edited setPriority function to be able to set priority within in progress list as well. #7"
+  553  git status
+  554  git add js/main.js
+  555  git commit -m "Edited renderAnimeList to be generic function that takes a string view as a parameter and renders corresponding list. #7"
+  556  git status
+  557  git add js/main.js
+  558  git commit -m "Edited renderAnimeList to be generic function that takes a string view as a parameter and renders corresponding list. #7"
+  559  git status
+  560  git status
+  561  git add js/main.js
+  562  git commit -m "Replaced instances of renderAnimeList with appropriate parameters. #7"
+  563  git status
+  564  git add js/main.js
+  565  git commit -m "Edit createResult function to not render a button for each anime card in inProgress view. #7"
+  566  git status
+  567  git push origin issue-7-add-to-in-progress
+  568  git status
+  569  git status
+  570  git add js/main.js
+  571  git status
+  572  git commit -m "Edit watchListOptionsfunction to be able to delete an anime result from in progress list as well. #7"
+  573  git status
+  574  git add .
+  575  git status
+  576  git commit -m "Clean up and changed meta tag image url for when sharing as a post."
+  577  git status
+  578  git add css/styles.css js/main.js
+  579  git status
+  580  git commit -m "Fixed bug where 'add' button was appearing in the flex-start on mobile rather than flex-end. #7"
+  581  git status
+  582  git add js/main.js
+  583  git commit -m "Edited animeListOptions function to show message if inProgressList is empty. #7"
+  584  git status
+  585  git commit -m "Completed issue-7-add-to-in-progress."
+  586  git push origin issue-7-add-to-in-progress
+  587  git status
+  588  git add .
+  589  git commit -m "Added image for thumbnail to images folder in app and changed url in meta tag."
+  590  git status
+  591  git push origin issue-7-add-to-in-progress
+  592  git switch master
+  593  git status
+  594  git pull origin master
+  595  git status
+  596  git branch issue-8-log-progress
+  597  git switch issue-8-log-progress
+  598  git status
+  599  git add js/main.js
+  600  git status
+  601  git commit -m "Edit addResult function to add a 'progress' property set to number 0 when a anime is added. #8"
+  602  git status
+  603  git add css/styles.css index.html
+  604  git commit -m "Creating dummy anime entry result with episodes number in progress. #8"
+  605  git commit -amend -m "Creating dummy anime entry result with episode numbers, in progres. #8"
+  606  git commit --amend -m "Creating dummy anime entry result with epsiode numbers, in progress. #8"
+  607  git push origin master
+  608  git push issue-8-log-progress
+  609  git push origin issue-8-log-progress
+  610  git status
+  611  exit
+  612  cd repos
+  613  ls
+  614  cd anime-log
+  615  git status
+  616  git add css/styles.css index.html
+  617  git status
+  618  git commit -m "Completed html and css for inc and dec buttons on dummy anime result. #8"
+  619  git status
+  620  git add css/styles.css index.html
+  621  git status
+  622  git commit -m "Added transforms to buttons and started css for progress bar in dummy anime result. #8"
+  623  git status
+  624  git commit -m
+  625  git commit -m "Create dummy entry in inProgressList for anime result with progress bar, add and minus buttons, and episode on and total episodes. #8"
+  626  git status
+  627  git push origin issue-8-log-progress
+  628  git status
+  629  git add .
+  630  git status
+  631  git commit -m
+  632  git commit -m "Edit createResult function for when data.view is inProgress to match dummy entry instead of "Synopsis", using animeObj.episodes property. #8"
+  633  git status
+  634  git add .
+  635  git status
+  636  git commit -m "Added inc and dec buttons to text-card. #8"
+  637  git status
+  638  git switch master
+  639  pwd
+  640  git cd ..
+  641  cd ..
+  642  ls
+  643  cd c0821-code-solutions/
+  644  git status
+  645  git branch es6-const-let
+  646  git branch --list
+  647  git switch es6-const-let
+  648  git status
+  649  git add es6-const-let/
+  650  git status
+  651  git commit -m "Completed es6-const-let exercise."
+  652  git push origin es6-const-let
+  653  git switch master
+  654  git status
+  655  git branch es6-template-literals
+  656  git switch es6-template-literals
+  657  git status
+  658  git add es6-template-literals/
+  659  git status
+  660  git commit -m "Completed es6-template-literals exercise."
+  661  git push origin es6-template-literals
+  662  git status
+  663  git switch master
+  664  git status
+  665  git pull origin master
+  666  git status
+  667  git branch es6-destructuring
+  668  git status
+  669  git switch es6-destructuring
+  670  git status
+  671  git add es6-destructuring
+  672  git status
+  673  git commit -m "Completed es6-destructuring exercise."
+  674  git push origin es6-destructuring
+  675  git switch master
+  676  git status
+  677  git pull origin master
+  678  git status
+  679  git branch es6-arrow-functions
+  680  git switch es6-arrow-functions
+  681  git status
+  682  git add es6-arrow-functions
+  683  git status
+  684  git commit -m "Completed es6-arrowow-functions exercise."
+  685  git push origin es6-arrow-functions
+  686  git switch master
+  687  git pull origin master
+  688  git status
+  689  git branch command-line-basics
+  690  git switch command-line-basics
+  691  git status
