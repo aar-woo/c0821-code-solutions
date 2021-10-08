@@ -6,7 +6,7 @@ const grades = {
 };
 const expressJSON = express.json();
 
-app.use(expressJSON); // need to call next() ??
+app.use(expressJSON);
 
 app.get('/api/grades', function (req, res) {
   const gradesArr = [];
