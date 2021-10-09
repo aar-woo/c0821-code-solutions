@@ -31,6 +31,19 @@ app.get('/api/notes/:id', function (req, res) {
   res.json(note);
 });
 
+app.use(express.json());
+
+app.post('/api/notes', function (req, res) {
+  if (JSON.stringify(req.body) === '{}') {
+    const err = {
+      error: 'content is a required field'
+    };
+    res.status(400);
+    res.json(err);
+  }
+  // res.json(typeof req.body);
+});
+
 app.listen(3000, () => {
   // console.log('Port 3000 listening');
 });
