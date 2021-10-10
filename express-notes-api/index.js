@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const data = require('./data.json');
+const fs = require('fs');
 
 app.get('/api/notes', function (req, res) {
   const notesArr = [];
@@ -19,7 +20,8 @@ app.get('/api/notes/:id', function (req, res) {
     };
     res.status(400);
     res.json(err);
-  } else if (!Object.prototype.hasOwnProperty.call(data.notes, id)) {
+  }
+  if (!Object.prototype.hasOwnProperty.call(data.notes, id)) {
     const err = {
       error: `cannot find note with id ${id}`
     };
@@ -41,7 +43,52 @@ app.post('/api/notes', function (req, res) {
     res.status(400);
     res.json(err);
   }
-  // res.json(typeof req.body);
+  const id = data.nextId;
+  data.nextId++;
+  req.body.id = id;
+  data.notes[id] = req.body;
+  const dataJSON = JSON.stringify(data, null, 2);
+  fs.writeFile('data.json', dataJSON, err => {
+    if (err) {
+      const err = {
+        error: 'An unexpected error occured.'
+      };
+      res.status(500);
+      res.json(err);
+    }
+    res.status(201);
+    res.json(data.notes[id]);
+  });
+});
+
+app.delete('/api/notes/:id', function (req, res) {
+  const id = req.params.id;
+  if (!(id > 0)) {
+    const err = {
+      error: 'id must be a positive integer'
+    };
+    res.status(400);
+    res.json(err);
+  }
+  if (!Object.prototype.hasOwnProperty.call(data.notes, id)) {
+    const err = {
+      error: `cannot find note with id ${id}`
+    };
+    res.status(400);
+    res.json(err);
+  }
+  delete data.notes[id];
+  const dataJSON = JSON.stringify(data, null, 2);
+  fs.writeFile('data.json', dataJSON, err => {
+    if (err) {
+      const err = {
+        error: 'An unexpected error occured.'
+      };
+      res.status(500);
+      res.json(err);
+    }
+    res.sendStatus(204);
+  });
 });
 
 app.listen(3000, () => {
