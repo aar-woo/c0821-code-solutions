@@ -42,23 +42,25 @@ app.post('/api/notes', function (req, res) {
     };
     res.status(400);
     res.json(err);
+  } else {
+    const id = data.nextId;
+    data.nextId++;
+    req.body.id = id;
+    data.notes[id] = req.body;
+    const dataJSON = JSON.stringify(data, null, 2);
+    fs.writeFile('data.json', dataJSON, err => {
+      if (err) {
+        const err = {
+          error: 'An unexpected error occured.'
+        };
+        res.status(500);
+        res.json(err);
+      } else {
+        res.status(201);
+        res.json(data.notes[id]);
+      }
+    });
   }
-  const id = data.nextId;
-  data.nextId++;
-  req.body.id = id;
-  data.notes[id] = req.body;
-  const dataJSON = JSON.stringify(data, null, 2);
-  fs.writeFile('data.json', dataJSON, err => {
-    if (err) {
-      const err = {
-        error: 'An unexpected error occured.'
-      };
-      res.status(500);
-      res.json(err);
-    }
-    res.status(201);
-    res.json(data.notes[id]);
-  });
 });
 
 app.delete('/api/notes/:id', function (req, res) {
@@ -69,26 +71,66 @@ app.delete('/api/notes/:id', function (req, res) {
     };
     res.status(400);
     res.json(err);
-  }
-  if (!Object.prototype.hasOwnProperty.call(data.notes, id)) {
+  } else if (!Object.prototype.hasOwnProperty.call(data.notes, id)) {
     const err = {
       error: `cannot find note with id ${id}`
     };
     res.status(400);
     res.json(err);
+  } else {
+    delete data.notes[id];
+    const dataJSON = JSON.stringify(data, null, 2);
+    fs.writeFile('data.json', dataJSON, err => {
+      if (err) {
+        const err = {
+          error: 'An unexpected error occured.'
+        };
+        res.status(500);
+        res.json(err);
+      }
+      res.sendStatus(204);
+    });
   }
-  delete data.notes[id];
-  const dataJSON = JSON.stringify(data, null, 2);
-  fs.writeFile('data.json', dataJSON, err => {
-    if (err) {
-      const err = {
-        error: 'An unexpected error occured.'
+});
+
+app.put('/api/notes/:id', function (req, res) {
+  const id = req.params.id;
+  let err;
+  if (!(id > 0) || JSON.stringify(req.body) === '{}') {
+    if (!(id > 0)) {
+      err = {
+        error: 'id must be a positive integer'
       };
-      res.status(500);
-      res.json(err);
+    } else {
+      err = {
+        error: 'content is a required field'
+      };
     }
-    res.sendStatus(204);
-  });
+    res.status(400);
+    res.json(err);
+  } else if (!Object.prototype.hasOwnProperty.call(data.notes, id)) {
+    err = {
+      error: `cannot find note with id ${id}`
+    };
+    res.status(404);
+    res.json(err);
+  } else {
+    req.body.id = parseInt(id);
+    data.notes[id] = req.body;
+
+    const dataJSON = JSON.stringify(data, null, 2);
+    fs.writeFile('data.json', dataJSON, err => {
+      if (err) {
+        err = {
+          error: 'An unexpected error occured.'
+        };
+        res.status(500);
+        res.json(err);
+      }
+      res.status(200);
+      res.json(data.notes[id]);
+    });
+  }
 });
 
 app.listen(3000, () => {
