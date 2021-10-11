@@ -20,17 +20,17 @@ app.get('/api/notes/:id', function (req, res) {
     };
     res.status(400);
     res.json(err);
-  }
-  if (!Object.prototype.hasOwnProperty.call(data.notes, id)) {
+  } else if (!Object.prototype.hasOwnProperty.call(data.notes, id)) {
     const err = {
       error: `cannot find note with id ${id}`
     };
     res.status(404);
     res.json(err);
+  } else {
+    const note = data.notes[id];
+    res.status(200);
+    res.json(note);
   }
-  const note = data.notes[id];
-  res.status(200);
-  res.json(note);
 });
 
 app.use(express.json());
@@ -87,8 +87,9 @@ app.delete('/api/notes/:id', function (req, res) {
         };
         res.status(500);
         res.json(err);
+      } else {
+        res.sendStatus(204);
       }
-      res.sendStatus(204);
     });
   }
 });
@@ -126,9 +127,10 @@ app.put('/api/notes/:id', function (req, res) {
         };
         res.status(500);
         res.json(err);
+      } else {
+        res.status(200);
+        res.json(data.notes[id]);
       }
-      res.status(200);
-      res.json(data.notes[id]);
     });
   }
 });
