@@ -29,7 +29,6 @@ WITH "numCopiesOfFilm" as (
       join "costOfEachFilm" using ("filmId")
       join "profits" using ("filmId")
     group by "filmId"
-    -- order by "revenue" desc
 )
 
 select "films"."title",
