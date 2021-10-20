@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class Stopwatch extends React.Component {
   constructor(props) {
@@ -33,7 +32,6 @@ class Stopwatch extends React.Component {
       playing: true,
       seconds: this.state.seconds + 1
     });
-    ReactDOM.render(<Stopwatch />, document.querySelector('#root'));
   }
 
   handleClick() {
