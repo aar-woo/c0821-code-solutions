@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+li {
+  width: 20rem;
+}
+
+.topic-div {
+  height: 2rem;
+  border: 2px solid black;
+  border-top: none;
+  background-color: rgb(184, 184, 184);
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+}
+
+li:first-child {
+  border-top: 2px solid black;
+}
+
+.topic-info {
+  width: 20rem;
+  border: 2px solid black;
+  border-top: none;
+  margin-top: 0;
+  padding: 0.1rem 0.5rem;
+}
+
+.hide {
+  display: none;
+}
