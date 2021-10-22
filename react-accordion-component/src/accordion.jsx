@@ -21,23 +21,18 @@ class Accordion extends React.Component {
   render() {
     const topicList = this.props.topics;
 
-    for (let i = 0; i < topicList.length; i++) {
-      if (topicList[i].name === this.state.topicSelected) {
-        topicList[i].infoClasses = 'topic-info';
-      } else {
-        topicList[i].infoClasses = 'topic-info hide';
-      }
-    }
     return (
       <ul onClick={this.handleClick}>
         {
           topicList.map(topic => {
+            let infoClasses;
+            this.state.topicSelected === topic.name ? infoClasses = 'topic-info' : infoClasses = 'topic-info hide';
             return (
               <li key={topic.name} data-key={topic.name}>
                 <div className="topic-div">
                   <h3>{topic.name}</h3>
                 </div>
-                <div className={topic.infoClasses}>
+                <div className={infoClasses}>
                   <p>{topic.info}</p>
                 </div>
               </li>
