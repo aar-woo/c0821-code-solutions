@@ -3,14 +3,26 @@ import ReactDOM from 'react-dom';
 import Carousel from './carousel';
 
 const urls = [
-  '../images/001.png',
-  '../images/004.png',
-  '../images/007.png',
-  '../images/025.png',
-  '../images/039.png'
+  {
+    id: 'bulbasaur',
+    url: '../images/001.png'
+  },
+  {
+    id: 'charmander',
+    url: '../images/004.png'
+  },
+  {
+    id: 'squirtle',
+    url: '../images/007.png'
+  },
+  {
+    id: 'pikachu',
+    url: '../images/025.png'
+  },
+  {
+    id: 'jigglypuff',
+    url: '../images/039.png'
+  }
 ];
 
-ReactDOM.render(<Carousel url={ urls[this.state.urlIndex]} />, document.querySelector('#root'));
-// render url = { urls[this.state.urlIndex] }
-// or
-// render url = { `../images/{this.state.urlIndex}` }
+ReactDOM.render(<Carousel urls={urls} />, document.querySelector('#root'));
