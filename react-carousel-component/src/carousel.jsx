@@ -8,7 +8,7 @@ export default class Carousel extends React.Component {
     this.dotClick = this.dotClick.bind(this);
   }
 
-  arrowClick() {
+  arrowClick(event) {
     let newIndex;
     if (event.target.matches('.fa-chevron-right')) {
       newIndex = this.state.urlIndex + 1;
@@ -27,7 +27,7 @@ export default class Carousel extends React.Component {
     this.startInterval();
   }
 
-  dotClick() {
+  dotClick(event) {
     const dotItem = event.target;
     const newIndex = parseInt(dotItem.getAttribute('data-key'));
     this.setState({ urlIndex: newIndex });
