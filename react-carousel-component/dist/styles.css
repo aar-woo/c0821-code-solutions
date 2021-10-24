@@ -8,6 +8,7 @@ a {
 
 i {
   font-size: x-large;
+  cursor: pointer;
 }
 
 .circles i {

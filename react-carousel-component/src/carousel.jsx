@@ -23,17 +23,31 @@ export default class Carousel extends React.Component {
       }
       this.setState({ urlIndex: newIndex });
     }
+    clearInterval(this.timerID);
+    this.startInterval();
   }
 
   dotClick() {
     const dotItem = event.target;
-    const dataKey = dotItem.getAttribute('data-key');
-    this.setState({ urlIndex: dataKey });
+    const newIndex = parseInt(dotItem.getAttribute('data-key'));
+    this.setState({ urlIndex: newIndex });
+    clearInterval(this.timerID);
+    this.startInterval();
   }
 
-  // add componentDidMount method that starts an interval changing the state every 3 seconds
-  // add to arrowClick and dotClick to clear the interval when clicked and starts new interval
-  // may have to add a property to this.state to pass intervalID
+  startInterval() {
+    this.timerID = setInterval(() => {
+      let newIndex = this.state.urlIndex + 1;
+      if (newIndex === this.props.urls.length) {
+        newIndex = 0;
+      }
+      this.setState({ urlIndex: newIndex });
+    }, 3000);
+  }
+
+  componentDidMount() {
+    this.startInterval();
+  }
 
   render() {
     const urlLinks = this.props.urls;
