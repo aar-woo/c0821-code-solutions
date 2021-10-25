@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: black;
+}
+
+i {
+  font-size: x-large;
+  cursor: pointer;
+}
+
+.circles i {
+  font-size: small;
+  padding: 0 0.2rem;
+}
+
+img {
+  width: 100%;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 40rem;
+  height: 22rem;
+  border: 3px solid black;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-around;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.img-div {
+  width: 20rem;
+}
