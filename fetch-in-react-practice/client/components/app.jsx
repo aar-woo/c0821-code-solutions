@@ -90,7 +90,7 @@ export default class App extends React.Component {
     })
       .then(res => res.json())
       .then(todos => {
-        const patchTodos = this.state.todos;
+        const patchTodos = this.state.todos.slice();
         patchTodos.splice(todoIndex, 1, patchedTodo);
         this.setState({ todos: patchTodos });
       })
