@@ -24,7 +24,8 @@ export default class App extends React.Component {
       .then(res => res.json())
       .then(todosData => this.setState({
         todos: todosData
-      }));
+      }))
+      .catch(err => console.error('error:', err));
   }
 
   addTodo(newTodo) {
@@ -42,7 +43,7 @@ export default class App extends React.Component {
     * TIP: Use Array.prototype.concat to create a new array containing the contents
     * of the old array, plus the object returned by the server.
     */
-    fetch('api/todos', {
+    fetch('/api/todos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newTodo)
@@ -73,12 +74,27 @@ export default class App extends React.Component {
      * And specify the "Content-Type" header as "application/json"
      */
 
-    // let todoStatus;
-    // for (let i = 0; i < this.state.todos.length; i++) {
-    //   if (this.state.todos[i].todoId === todoId) {
-    //     todoStatus = this.state.todos[i].isCompleted;
-    //   }
-    // }
+    let todoIndex;
+    let isCompletedStatus;
+    for (let i = 0; i < this.state.todos.length; i++) {
+      if (this.state.todos[i].todoId === todoId) {
+        todoIndex = i;
+        isCompletedStatus = this.state.todos[i].isCompleted;
+      }
+    }
+    const patchedTodo = { ...this.state.todos[todoIndex], isCompleted: !isCompletedStatus };
+    fetch(`/api/todos/${todoId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(patchedTodo)
+    })
+      .then(res => res.json())
+      .then(todos => {
+        const patchTodos = this.state.todos;
+        patchTodos.splice(todoIndex, 1, patchedTodo);
+        this.setState({ todos: patchTodos });
+      })
+      .catch(err => console.error('error:', err));
   }
 
   render() {
