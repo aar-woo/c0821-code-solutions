@@ -13,7 +13,7 @@ class ValidatedInput extends React.Component {
 
   render() {
     let errMessage;
-    let iconClass = 'fas fa-times-circle';
+    let iconClass = 'fas fa-times-circle red';
     const regex = /(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}/;
 
     if (this.state.password.length === 0) {
@@ -24,7 +24,7 @@ class ValidatedInput extends React.Component {
       errMessage = 'Password must contain a number, capital letter, and special character.';
     } else {
       errMessage = '';
-      iconClass = 'fas fa-check-circle';
+      iconClass = 'fas fa-check-circle green';
     }
 
     return (
