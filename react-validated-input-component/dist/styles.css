@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+input {
+  margin-right: 0.5rem;
+}
+
+p {
+  margin: 0.4rem 0;
+}
+
+i {
+  font-size: medium;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.no-password {
+  color: red;
+  font-size: 0.8rem;
+}
