@@ -1,0 +1,55 @@
+For each feature in the application, describe the flow of the code in writing,
+including the client, server, and database. How does the code work?
+
+User can sign up.
+
+  The server must first be started (on port 3000) for the client to see the webpage.
+  At first nothing is rendered, then after the componentDidMount runs, the App's state is set
+    to user: null and isAuthorizing: false.
+    Now that the state was updated and isAuthorizing is false, the page is rerendered with the <Auth> component
+    for the user to sign in/sign up.
+  Upon registering and entering username and password, the client sends a POST request to api/auth/sign-up
+  The server parses the response from JSON, checks if a username and password were provided on the request body, throws an error if not
+    and if there is a username and password, server hashes the password with argon2,
+    then inserts the clients username and hashedpassword into the database
+    and also assigns the variable 'user' to the result of querying the db for the new user.
+
+
+User can sign in.
+
+  Client enters credentials and click the sign in btn and the handleSubmit function is called that then
+  sends a fetch POST request to the server with the specified action 'sign-in'. (api/auth/sign-in)'
+  The server parses the response body from JSON.
+  The server queries the database for the client's username and assigns varaible 'user' to the queried result.
+  The user's entered password is then checked with argon2.verify against the databases's hashedpassword
+    and if they match the server sends the client a token, a signed payload and user's info.
+    If the hashed passwords don't match, a error is thrown 'invalid login'.
+  The handleSignIn function is then called with the result of this fetch request (user and token).
+  The handleSignIn function then sets the item token on the window object and sets the state user to the returned signed user.
+  This calls a rerender of the page with a user now set and renders the auth page at first
+    but since there is a user now set and accessed through AppContext, the auth page calls the <Redirect> component with to="".
+    This sets the window.location hash to '#', which triggers the event listener 'hashchange', and sets the
+    state's route to the new parsed route of the window.location.hash.
+    This calls a rerender and renders the home page.
+    Upon the App component mounting with the home page view, the token is retrieved from the window and decoded into its payload
+    and assigned to variable user.
+    Then sets the state of the App's user to user and isAuthorizing to 'false'.
+
+User can stay signed in (even if they refresh the page).
+
+  On reload, the App's render function is called and checks if the states isAuthorizing is true and returns null if so.
+  Since the isAuthorizing is now 'false' after logging in, the render function continues and renders
+  the page with the appropriate PageContainer element, in this case there is only '#' (home page when logged in) which is
+  the state's route upon reload.
+  The componentDidMount function runs and sets the state's user to user from the decoded token
+    so that the same user stays logged in.
+
+
+User can sign out.
+
+  From the home page the client clicks the sign out btn in the navbar which calls the handleSignOut function via AppContext.
+  This function removes the token from the window and set's the state's user to null.
+  The Home page is rendered initially, but since user is now null, accessed through AppContext, the render function of the <Home>
+    component calls the <Redirect> comopnent with the props to="sign-in".
+  The <Redirect> component changes the window.location.hash, which triggers the hashchange event listener which sets the state's
+  route to the new window.location.hash. This rerenders the page to the sign-in page.
