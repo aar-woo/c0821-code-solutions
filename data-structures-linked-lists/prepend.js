@@ -2,15 +2,9 @@
 /* exported prepend */
 
 function prepend(list, value) {
-  const newList = new LinkedList(value);
-  let current = list;
-  let currList = newList;
+  const node = new LinkedList(value);
 
-  while (current) {
-    currList.next = new LinkedList(current.data);
-    current = current.next;
-    currList = currList.next;
-  }
+  node.next = list;
 
-  return newList;
+  return node;
 }
