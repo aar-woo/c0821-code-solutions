@@ -62,6 +62,7 @@ app.put('/api/grades/:gradeId', async (req, res, next) => {
     res.status(400).json({
       error: 'Invalid request, gradeId must be a positive integer, request must contain name, course, and a score between 0 and 100'
     });
+    return;
   }
 
   const sql = `
@@ -87,7 +88,39 @@ app.put('/api/grades/:gradeId', async (req, res, next) => {
       updatedGrade
     });
   } catch (err) {
-    console.error(err);
+    res.status(500).json({
+      error: 'Sorry an error occurred while querying the database'
+    });
+  }
+});
+
+app.delete('/api/grades/:gradeId', async (req, res) => {
+  const id = req.params.gradeId;
+  if (!(id > 0)) {
+    res.status(400).json({
+      error: 'Invalid request, gradeId must be a positive integer'
+    });
+    return;
+  }
+
+  const sql = `
+        DELETE from "grades"
+          where "gradeId" = $1
+          returning *;
+    `;
+  const values = [id];
+
+  try {
+    const queryResponse = await db.query(sql, values);
+    const deletedGrade = queryResponse.rows[0];
+    if (!deletedGrade) {
+      res.status(404).json({
+        error: 'A grade with this gradeId does not exist in the database'
+      });
+      return;
+    }
+    res.status(204).json(deletedGrade);
+  } catch (err) {
     res.status(500).json({
       error: 'Sorry an error occurred while querying the database'
     });
