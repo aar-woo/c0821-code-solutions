@@ -10,11 +10,17 @@ describe('Test the root path', () => {
   });
 
 describe('Test the /api/grades path', () => {
+  let res;
+  
+  beforeAll(async() => {
+    res = await request(app).get("/api/grades");
+  })
 
-  test('It should respond to the GET method and return an array of objects', async() => {
-    const res = await request(app).get("/api/grades");
+  test('It should respond to the GET method with a status code of 200', async() => {
     expect(res.statusCode).toBe(200);
-    const grades = res.rows;
+  })
+  
+  test('The response body contain a grades array', async() => {
     expect(Array.isArray(res.body.grades)).toBe(true);
   })
 })
