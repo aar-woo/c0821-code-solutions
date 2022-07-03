@@ -18,7 +18,7 @@ app.get('/api/grades', async (req, res, next) => {
   try {
     const queryResponse = await db.query(sql);
     grades = queryResponse.rows;
-    res.status(200).json(grades);
+    res.status(200).json({grades});
   } catch (err) {
     res.status(500).json({
       error: 'Sorry an error occurred while querying the database'
