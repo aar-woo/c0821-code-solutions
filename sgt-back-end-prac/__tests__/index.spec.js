@@ -53,10 +53,10 @@ describe('Test a post request at the /api/grades path', () => {
 
 describe('Test a put request at the /api/grades/:id path', () => {
   let res;
-  const gradeId = 30;
+  const reqGradeId = 30;
     beforeAll(async() => {
       res = await request(app)
-        .put(`/api/grades/${gradeId}`)
+        .put(`/api/grades/${reqGradeId}`)
         .send({
           name: 'Replacer',
           course: 'Editing',
@@ -76,8 +76,8 @@ describe('Test a put request at the /api/grades/:id path', () => {
     expect(res.body.updatedGrade).toHaveProperty('gradeId')
   })
 
-  // test('The gradeId of the updated grade should be the same as the gradeId in the request', async() => {
-  //   expect(res.body.udpatedGrade.gradeId).toBe(gradeId);
-  // })
+  test('The gradeId of the updated grade should be the same as the gradeId in the request', async() => {
+    expect(res.body.updatedGrade.gradeId).toBe(reqGradeId);
+  })
 
 })
