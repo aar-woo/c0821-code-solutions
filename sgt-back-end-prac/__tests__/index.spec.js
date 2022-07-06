@@ -38,9 +38,16 @@ describe('Test a put request at the /api/grades', () => {
       })
   });
 
-
   test('It should respond to the PUT request with a status code of 201', async() => {
     expect(res.statusCode).toBe(201);
+  })
+
+  test('The response body contains an object with all values passed in the request body as well as auto-generated values', async() => {
+    expect(res.body.insertedGrade).toHaveProperty('course')
+    expect(res.body.insertedGrade).toHaveProperty('name')
+    expect(res.body.insertedGrade).toHaveProperty('score')
+    expect(res.body.insertedGrade).toHaveProperty('createdAt')
+    expect(res.body.insertedGrade).toHaveProperty('gradeId')
   })
 
 
