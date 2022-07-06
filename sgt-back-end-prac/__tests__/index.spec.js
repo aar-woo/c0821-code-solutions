@@ -25,7 +25,7 @@ describe('Test a get request at the /api/grades path', () => {
   })
 })
 
-describe('Test a put request at the /api/grades', () => {
+describe('Test a post request at the /api/grades path', () => {
   let res;
 
   beforeAll(async() => {
@@ -38,7 +38,7 @@ describe('Test a put request at the /api/grades', () => {
       })
   });
 
-  test('It should respond to the PUT request with a status code of 201', async() => {
+  test('It should respond to the POST request with a status code of 201', async() => {
     expect(res.statusCode).toBe(201);
   })
 
@@ -49,6 +49,23 @@ describe('Test a put request at the /api/grades', () => {
     expect(res.body.insertedGrade).toHaveProperty('createdAt')
     expect(res.body.insertedGrade).toHaveProperty('gradeId')
   })
+})
 
+describe('Test a put request at the /api/grades/:id path', () => {
+  let res;
+  const gradeId = 30;
+    beforeAll(async() => {
+      res = await request(app)
+        .put(`/api/grades/${gradeId}`)
+        .send({
+          name: 'Replacer',
+          course: 'Editing',
+          score: 8
+        })
+    });
+
+  test('It should respond to the POST request with a status code of 201', async() => {
+    expect(res.statusCode).toBe(200);
+  })
 
 })
