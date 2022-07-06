@@ -1,3 +1,4 @@
+const { post } = require("superagent");
 var request = require("supertest");
 var app = require('../index');
 
@@ -53,7 +54,7 @@ describe('Test a post request at the /api/grades path', () => {
 
 describe('Test a put request at the /api/grades/:id path', () => {
   let res;
-  const reqGradeId = 30;
+  const reqGradeId = 11;
     beforeAll(async() => {
       res = await request(app)
         .put(`/api/grades/${reqGradeId}`)
@@ -62,9 +63,9 @@ describe('Test a put request at the /api/grades/:id path', () => {
           course: 'Editing',
           score: 8
         })
-    });
+  });
 
-  test('It should respond to the POST request with a status code of 201', async() => {
+  test('It should respond to the PUT request with a status code of 201', async() => {
     expect(res.statusCode).toBe(200);
   })
 
@@ -78,6 +79,32 @@ describe('Test a put request at the /api/grades/:id path', () => {
 
   test('The gradeId of the updated grade should be the same as the gradeId in the request', async() => {
     expect(res.body.updatedGrade.gradeId).toBe(reqGradeId);
+  })
+
+})
+
+describe('Test a delete request at the /api/grades/:id path', () => {
+  let deleteRes;
+
+  beforeAll(async() => {
+    let postResGradeId;
+
+    let postRes = await request(app)
+      .post("/api/grades")
+      .send({
+        name: 'ToBeDeleted',
+        course: 'Ethics',
+        score: 90
+    })
+
+    postResGradeId = postRes.body.insertedGrade.gradeId;
+
+    deleteRes = await request(app)
+      .delete(`/api/grades/${postResGradeId}`);
+  });
+
+  test('It should respond to the DELETE request with a status code of 201', async() => {
+    expect(deleteRes.statusCode).toBe(204);
   })
 
 })
