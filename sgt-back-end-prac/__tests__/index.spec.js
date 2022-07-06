@@ -68,4 +68,16 @@ describe('Test a put request at the /api/grades/:id path', () => {
     expect(res.statusCode).toBe(200);
   })
 
+  test('The response body contains an object with all values passed in the request body as well as auto-generated values', async() => {
+    expect(res.body.updatedGrade).toHaveProperty('course')
+    expect(res.body.updatedGrade).toHaveProperty('name')
+    expect(res.body.updatedGrade).toHaveProperty('score')
+    expect(res.body.updatedGrade).toHaveProperty('createdAt')
+    expect(res.body.updatedGrade).toHaveProperty('gradeId')
+  })
+
+  // test('The gradeId of the updated grade should be the same as the gradeId in the request', async() => {
+  //   expect(res.body.udpatedGrade.gradeId).toBe(gradeId);
+  // })
+
 })
