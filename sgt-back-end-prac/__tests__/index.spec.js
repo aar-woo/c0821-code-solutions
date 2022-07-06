@@ -9,18 +9,39 @@ describe('Test the root path', () => {
     });
   });
 
-describe('Test the /api/grades path', () => {
+describe('Test a get request at the /api/grades path', () => {
   let res;
-  
+
   beforeAll(async() => {
     res = await request(app).get("/api/grades");
   })
 
-  test('It should respond to the GET method with a status code of 200', async() => {
+  test('It should respond to the GET request with a status code of 200', async() => {
     expect(res.statusCode).toBe(200);
   })
   
-  test('The response body contain a grades array', async() => {
+  test('The response body contains a grades array', async() => {
     expect(Array.isArray(res.body.grades)).toBe(true);
   })
+})
+
+describe('Test a put request at the /api/grades', () => {
+  let res;
+
+  beforeAll(async() => {
+    res = await request(app)
+      .post("/api/grades")
+      .send({
+        name: 'Tester',
+        course: 'TDD',
+        score: 100
+      })
+  });
+
+
+  test('It should respond to the PUT request with a status code of 201', async() => {
+    expect(res.statusCode).toBe(201);
+  })
+
+
 })
